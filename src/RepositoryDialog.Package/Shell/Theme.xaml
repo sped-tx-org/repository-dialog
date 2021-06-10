@@ -1,0 +1,129 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:RepositoryDialog.Shell"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+    xmlns:vsui="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0">
+
+    <SolidColorBrush x:Key="Theme.Environment.Background">#FF252526</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.Environment.Foreground">#FFF1F1F1</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.Environment.BorderBrush">#FF595959</SolidColorBrush>
+
+    <SolidColorBrush x:Key="Theme.Button.Background" Color="Transparent" />
+    <SolidColorBrush x:Key="Theme.Button.Foreground">#FFF1F1F1</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.Button.BorderBrush">#FF007ACC</SolidColorBrush>
+
+    <SolidColorBrush x:Key="Theme.ComboBox.Background" Color="Transparent" />
+    <SolidColorBrush x:Key="Theme.ComboBox.Foreground">#FFF1F1F1</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.ComboBox.BorderBrush">#FF252526</SolidColorBrush>
+
+    <SolidColorBrush x:Key="Theme.CheckBox.Background" Color="Transparent" />
+    <SolidColorBrush x:Key="Theme.CheckBox.Foreground">#FFF1F1F1</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.CheckBox.BorderBrush">#FF007ACC</SolidColorBrush>
+
+    <SolidColorBrush x:Key="Theme.Label.Background" Color="Transparent" />
+    <SolidColorBrush x:Key="Theme.Label.Foreground">#FFF1F1F1</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.Label.BorderBrush">#FF252526</SolidColorBrush>
+
+    <SolidColorBrush x:Key="Theme.TextBox.Background" Color="Transparent" />
+    <SolidColorBrush x:Key="Theme.TextBox.Foreground">#FFF1F1F1</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.TextBox.BorderBrush">#FF434346</SolidColorBrush>
+    <SolidColorBrush x:Key="Theme.TextBox.CaretBrush">#EEE2E2E2</SolidColorBrush>
+
+    <sys:Double x:Key="Theme.Environment.FontSize">12</sys:Double>
+    <sys:Double x:Key="Theme.Environment.TitleFontSize">24</sys:Double>
+    <FontWeight x:Key="Theme.Environment.FontWeight">Regular</FontWeight>
+    <FontFamily x:Key="Theme.Environment.FontFamily">Leelawadee UI</FontFamily>
+
+    <ObjectDataProvider
+        x:Key="OutputTypeDataProvider"
+        MethodName="GetValues"
+        ObjectType="{x:Type sys:Enum}">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="shell:OutputType" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle
+                        Margin="2"
+                        SnapsToDevicePixels="true"
+                        Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                        StrokeDashArray="1 2"
+                        StrokeThickness="1" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DialogWindowBaseStyle" TargetType="{x:Type ui:DialogWindow}">
+        <Setter Property="Background" Value="{StaticResource Theme.Environment.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Theme.Environment.BorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource Theme.Environment.FontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource Theme.Environment.FontSize}" />
+        <Setter Property="FontWeight" Value="{StaticResource Theme.Environment.FontWeight}" />
+    </Style>
+
+    <Style x:Key="GridBaseStyle" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static ui:EnvironmentColors.ToolWindowBackgroundBrushKey}}" />
+    </Style>
+
+    <Style x:Key="TextBoxBaseStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Margin" Value="7,0,7,0" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource Theme.Environment.FontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource Theme.Environment.FontSize}" />
+        <Setter Property="FontWeight" Value="{StaticResource Theme.Environment.FontWeight}" />
+        <Setter Property="Foreground" Value="{StaticResource Theme.TextBox.Foreground}" />
+        <Setter Property="Background" Value="{StaticResource Theme.TextBox.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Theme.TextBox.BorderBrush}" />
+        <Setter Property="CaretBrush" Value="{StaticResource Theme.TextBox.CaretBrush}" />
+    </Style>
+
+    <Style x:Key="ButtonBaseStyle" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+        <Setter Property="Width" Value="55" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="FontFamily" Value="{StaticResource Theme.Environment.FontFamily}" />
+        <Setter Property="FontWeight" Value="{StaticResource Theme.Environment.FontWeight}" />
+        <Setter Property="FontSize" Value="{StaticResource Theme.Environment.FontSize}" />
+        <Setter Property="Background" Value="{StaticResource Theme.Button.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Theme.Button.BorderBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource Theme.Button.Foreground}" />
+    </Style>
+
+    <Style x:Key="LabelBaseStyle" TargetType="{x:Type Label}">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontFamily" Value="{StaticResource Theme.Environment.FontFamily}" />
+        <Setter Property="FontWeight" Value="{StaticResource Theme.Environment.FontWeight}" />
+        <Setter Property="FontSize" Value="{StaticResource Theme.Environment.FontSize}" />
+        <Setter Property="Background" Value="{StaticResource Theme.Label.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource Theme.Label.Foreground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Theme.Label.BorderBrush}" />
+    </Style>
+
+    <Style x:Key="CheckBoxBaseStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="FontFamily" Value="{StaticResource Theme.Environment.FontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource Theme.Environment.FontSize}" />
+        <Setter Property="FontWeight" Value="{StaticResource Theme.Environment.FontWeight}" />
+        <Setter Property="Foreground" Value="{StaticResource Theme.CheckBox.Foreground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Theme.CheckBox.BorderBrush}" />
+    </Style>
+
+    <Style TargetType="{x:Type Path}">
+        <Setter Property="Stroke" Value="{StaticResource Theme.Environment.Foreground}" />
+    </Style>
+
+    <Style BasedOn="{StaticResource DialogWindowBaseStyle}" TargetType="{x:Type ui:DialogWindow}" />
+    <Style BasedOn="{StaticResource GridBaseStyle}" TargetType="{x:Type Grid}" />
+    <Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="{x:Type TextBox}" />
+    <Style BasedOn="{StaticResource ButtonBaseStyle}" TargetType="{x:Type Button}" />
+    <Style BasedOn="{StaticResource LabelBaseStyle}" TargetType="{x:Type Label}" />
+    <Style BasedOn="{StaticResource CheckBoxBaseStyle}" TargetType="{x:Type CheckBox}" />
+
+</ResourceDictionary>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29006.145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenerator", "tools\CodeGenerator\CodeGenerator.csproj", "{D31BFD43-E056-46A0-9213-D78BA5826152}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{772861A7-2D3C-444D-B3BF-F334669B61D8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		global.json = global.json
+		NuGet.config = NuGet.config
+		README.md = README.md
+		eng\Version.Details.xml = eng\Version.Details.xml
+		eng\Versions.props = eng\Versions.props
+		eng\VisualStudio.props = eng\VisualStudio.props
+		eng\VisualStudio.targets = eng\VisualStudio.targets
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDialog.Vsix", "src\RepositoryDialog.Vsix\RepositoryDialog.Vsix.csproj", "{D9157582-EBDB-4A67-A886-DB2F71000B13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{2E58160B-6E62-45D3-8DF8-9A51CCECC3AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryDialog.Package", "src\RepositoryDialog.Package\RepositoryDialog.Package.csproj", "{962E683A-3991-4487-8906-F919FD016352}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D31BFD43-E056-46A0-9213-D78BA5826152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31BFD43-E056-46A0-9213-D78BA5826152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9157582-EBDB-4A67-A886-DB2F71000B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9157582-EBDB-4A67-A886-DB2F71000B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9157582-EBDB-4A67-A886-DB2F71000B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9157582-EBDB-4A67-A886-DB2F71000B13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{962E683A-3991-4487-8906-F919FD016352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{962E683A-3991-4487-8906-F919FD016352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{962E683A-3991-4487-8906-F919FD016352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{962E683A-3991-4487-8906-F919FD016352}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D31BFD43-E056-46A0-9213-D78BA5826152} = {2E58160B-6E62-45D3-8DF8-9A51CCECC3AF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEAD7A47-07E8-4A84-A12F-40D24BD9BBEA}
+	EndGlobalSection
+EndGlobal
