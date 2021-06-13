@@ -6,7 +6,6 @@
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="$(MicrosoftVSSDKBuildToolsVersion)" />
   </ItemGroup>
 
-
   <Choose>
     <When Condition="'$(IsVsixProject)'=='true'">
       <PropertyGroup>
@@ -38,22 +37,10 @@
     </When>
   </Choose>
 
-
-  <Choose>
-    <When Condition="'$(ImportVsSDKRules)'=='true'">
-      <ItemGroup>
-        <PropertyPageSchema Include="VsixProject.BrowseObject.xaml">
-          <Context>Project;BrowseObject</Context>
-        </PropertyPageSchema>
-      </ItemGroup>
-    </When>
-  </Choose>
-
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
 
   <Target Name="VSIXIdentifierProjectOutputGroup" Condition="'$(CreateVsixContainer)' == 'false'" />
   <Target Name="VSIXNameProjectOutputGroup" Condition="'$(CreateVsixContainer)' == 'false'" />
-
 
   <Target Name="IncludeNuGetResolvedAssets" AfterTargets="ResolveReferences" Condition="'$(IsVsixProject)'=='true'">
     <ItemGroup>
@@ -64,7 +51,6 @@
       </VSIXCopyLocalReferenceSourceItem>
     </ItemGroup>
   </Target>
-
 
   <Target Name="CustomLinkVSSDKEmbeddableAssemblies" AfterTargets="LinkVSSDKEmbeddableAssemblies">
     <ItemGroup>
@@ -103,7 +89,6 @@
       </ReferencePath>
     </ItemGroup>
   </Target>
-
 
   <Target Name="CopyVsixToOutput" AfterTargets="CreateVsixContainer" Condition="'$(IsVsixProject)'=='true'">
     <PropertyGroup>

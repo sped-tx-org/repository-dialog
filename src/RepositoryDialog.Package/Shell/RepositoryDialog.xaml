@@ -8,9 +8,9 @@
     xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
     xmlns:vsui="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
     Title="New Repository"
-    Width="1200"
-    Height="500"
-    Background="Transparent"
+    Width="1025"
+    Height="550"
+    Background="#FF252526"
     mc:Ignorable="d">
     <ui:DialogWindow.Resources>
         <ResourceDictionary>
@@ -19,21 +19,26 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ui:DialogWindow.Resources>
-    <Grid x:Name="MainGrid" Margin="15">
+    <Grid
+        x:Name="MainGrid"
+        Margin="15"
+        Background="Transparent">
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Style="{StaticResource TitleTextStyle}">Repository Generator Settings</TextBlock>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="450" />
+                <ColumnDefinition Width="525*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120" />
-                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="80" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -56,7 +61,8 @@
                     Grid.Column="1"
                     TabIndex="0"
                     Text="{Binding RepositoryName, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                    TextChanged="RepositoryNameTextBox_TextChanged" />
+                    TextChanged="RepositoryNameTextBox_TextChanged"
+                    ToolTip="The name of the repository." />
 
                 <Label Grid.Row="2" Grid.Column="0">Solution name:</Label>
                 <TextBox
@@ -64,7 +70,8 @@
                     Grid.Row="2"
                     Grid.Column="1"
                     TabIndex="1"
-                    Text="{Binding SolutionName, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding SolutionName, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="The name of the solution." />
 
                 <Label Grid.Row="4" Grid.Column="0">Output path:</Label>
                 <TextBox
@@ -72,7 +79,8 @@
                     Grid.Row="4"
                     Grid.Column="1"
                     TabIndex="2"
-                    Text="{Binding OutputPath, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding OutputPath, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="The working directory to generate the files." />
                 <Button
                     x:Name="OutputPathBrowseButton"
                     Grid.Row="4"
@@ -88,14 +96,16 @@
                     Grid.Row="6"
                     Grid.Column="1"
                     TabIndex="4"
-                    Text="{Binding RootNamespace, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding RootNamespace, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="The default namespace for projects in the repository." />
                 <CheckBox
                     x:Name="ApplyNamespaceToProjectsCheckBox"
                     Grid.Row="7"
                     Grid.Column="1"
                     Margin="10,10,0,0"
                     Click="ApplyNamespaceToProjectsCheckBox_Click"
-                    TabIndex="5">
+                    TabIndex="5"
+                    ToolTip="Sets the namespace of each project to the namespace above.">
                     Apply namespace to projects
                 </CheckBox>
                 <Label Grid.Row="9" Grid.Column="0">Target Framework:</Label>
@@ -104,20 +114,22 @@
                     Grid.Row="9"
                     Grid.Column="1"
                     TabIndex="6"
-                    Text="{Binding TargetFramework, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding TargetFramework, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="The target framework for projects in the repository." />
                 <CheckBox
                     x:Name="ApplyTargetFrameworkToProjectsCheckBox"
                     Grid.Row="10"
                     Grid.Column="1"
                     Margin="10,10,0,0"
                     Click="ApplyTargetFrameworkToProjectsCheckBox_Click"
-                    TabIndex="7">
+                    TabIndex="7"
+                    ToolTip="Sets the target framework of each project to the target framework above.">
                     Apply target framework to projects
                 </CheckBox>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="60" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -127,13 +139,13 @@
                     <RowDefinition Height="35" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
-                <Button
+                <!--<Button
                     Grid.Row="0"
                     Grid.Column="1"
                     Click="DefaultButton_Click">
                     Test
-                </Button>
-                <Label Grid.Row="2" Grid.Column="0">Projects:</Label>
+                </Button>-->
+                <Label Grid.Row="1" Grid.Column="0">Projects:</Label>
                 <DataGrid
                     x:Name="ProjectsDataGrid"
                     Grid.Row="2"
@@ -146,43 +158,45 @@
                     CanUserDeleteRows="True"
                     CanUserResizeColumns="False"
                     CanUserSortColumns="False"
+                    CellStyle="{StaticResource DataGridCellStyle}"
+                    ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
                     HeadersVisibility="Column"
                     ItemsSource="{Binding Projects, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                    RowStyle="{StaticResource DataGridRowStyle}"
                     SelectionMode="Single"
                     TabIndex="8"
+                    ToolTip="Contains the projects for the repository."
                     VerticalScrollBarVisibility="Auto">
-                    <DataGrid.Resources>
-                        <Style TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="Margin" Value="3" />
-                            <Setter Property="Background" Value="{StaticResource Theme.Environment.Background}" />
-                            <Setter Property="Foreground" Value="{StaticResource Theme.Environment.Foreground}" />
-                            <Setter Property="FontWeight" Value="Light" />
-                            <Setter Property="FontSize" Value="{StaticResource Theme.Environment.FontSize}" />
-                        </Style>
-                    </DataGrid.Resources>
                     <DataGrid.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Click="ProjectsDataGrid_OnDeleteProjectClick" Header="Delete Project" />
-                            <MenuItem Click="ProjectsDataGrid_OnAddProjectClick" Header="Add Project" />
+                        <ContextMenu
+                            Background="{DynamicResource Theme.Environment.Background}"
+                            Foreground="{DynamicResource Theme.Environment.Foreground}"
+                            IsOpen="True">
+                            <MenuItem Header="Add Project" Click="ProjectsDataGrid_OnAddProjectClick"/>
+                            <MenuItem Header="Delete Project" Click="ProjectsDataGrid_OnDeleteProjectClick"/>
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             MinWidth="120"
                             Binding="{Binding ProjectName, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                            EditingElementStyle="{StaticResource DataGridTextColumnCellEditStyle}"
                             Header="Project Name" />
                         <DataGridTextColumn
                             MinWidth="120"
                             Binding="{Binding RootNamespace, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                            EditingElementStyle="{StaticResource DataGridTextColumnCellEditStyle}"
                             Header="Root Namespace" />
                         <DataGridTextColumn
                             MinWidth="120"
                             Binding="{Binding TargetFramework, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                            EditingElementStyle="{StaticResource DataGridTextColumnCellEditStyle}"
                             Header="Target Framework" />
                         <DataGridComboBoxColumn
-                            Header="Output Type"
-                            ItemsSource="{Binding Source={StaticResource OutputTypeDataProvider}, Mode=OneWay}"
-                            SelectedItemBinding="{Binding OutputType, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+                            EditingElementStyle="{StaticResource DataGridComboBoxColumnCellEditStyle}"
+                            Header="Project Type"
+                            ItemsSource="{Binding Source={StaticResource ProjectTypeDataProvider}, Mode=OneWay}"
+                            SelectedItemBinding="{Binding ProjectType, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
 
                     </DataGrid.Columns>
                 </DataGrid>

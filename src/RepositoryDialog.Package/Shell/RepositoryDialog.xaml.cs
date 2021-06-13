@@ -98,8 +98,6 @@ namespace RepositoryDialog.Shell
             var project = new Project();
             var context = GetRepository();
             context.Projects.Add(project);
-
-            
         }
 
         private void OnBrowseButton_Click(object sender, RoutedEventArgs e)
@@ -124,17 +122,26 @@ namespace RepositoryDialog.Shell
             SolutionNameTextBox.SetValue(TextBox.TextProperty, current);
         }
 
-        private void DefaultButton_Click(object sender, RoutedEventArgs e)
+        private void ProjectsDataGrid_PreparingCellForEdit(object sender, DataGridPreparingCellForEditEventArgs e)
         {
-            var context = GetRepository();
-            context.RepositoryName = "test-repository";
-            context.SolutionName = "test-repository";
-            context.OutputPath = "V:\\temp";
-            context.RootNamespace = "My.Deep.RootNamespace";
-            context.TargetFramework = "net48";
-            context.Projects.Add(new Project { ProjectName = "Test.Repository.One", RootNamespace = "My.Deep.RootNamespace", TargetFramework = "net48", OutputType = OutputType.Library });
-            context.Projects.Add(new Project { ProjectName = "Test.Repository.Two", RootNamespace = "My.Deep.RootNamespace", TargetFramework = "net48", OutputType = OutputType.Library });
-            context.Projects.Add(new Project { ProjectName = "Test.Repository.Three", RootNamespace = "My.Deep.RootNamespace", TargetFramework = "net48", OutputType = OutputType.Library });
+            var element = e.Column.GetCellContent(ProjectsDataGrid.SelectedItem);
+            var dataGridCell = element.Parent as DataGridCell;
+            dataGridCell.Background = new SolidColorBrush(Colors.Transparent);
+
+
         }
+
+        //private void DefaultButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var context = GetRepository();
+        //    context.RepositoryName = "test-repository";
+        //    context.SolutionName = "test-repository";
+        //    context.OutputPath = "V:\\temp";
+        //    context.RootNamespace = "My.Deep.RootNamespace";
+        //    context.TargetFramework = "net48";
+        //    context.Projects.Add(new Project { ProjectName = "Test.Repository.One", RootNamespace = "My.Deep.RootNamespace", TargetFramework = "net48", OutputType = OutputType.Library });
+        //    context.Projects.Add(new Project { ProjectName = "Test.Repository.Two", RootNamespace = "My.Deep.RootNamespace", TargetFramework = "net48", OutputType = OutputType.Library });
+        //    context.Projects.Add(new Project { ProjectName = "Test.Repository.Three", RootNamespace = "My.Deep.RootNamespace", TargetFramework = "net48", OutputType = OutputType.Library });
+        //}
     }
 }

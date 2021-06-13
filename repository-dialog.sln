@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDialog.Vsix", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{2E58160B-6E62-45D3-8DF8-9A51CCECC3AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryDialog.Package", "src\RepositoryDialog.Package\RepositoryDialog.Package.csproj", "{962E683A-3991-4487-8906-F919FD016352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDialog.Package", "src\RepositoryDialog.Package\RepositoryDialog.Package.csproj", "{962E683A-3991-4487-8906-F919FD016352}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

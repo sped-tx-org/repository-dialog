@@ -23,11 +23,7 @@ namespace RepositoryDialog
         {
             get
             {
-                if (_serviceProvider is null)
-                {
-                    _serviceProvider = CreateServiceCollection().BuildServiceProvider();
-                }
-                return _serviceProvider;
+                return _serviceProvider ??= CreateServiceCollection().BuildServiceProvider();
             }
         }
 
@@ -51,11 +47,30 @@ namespace RepositoryDialog
 
         public static IRepositoryProject Convert(this RepositoryDialog.Shell.Project source)
         {
-            return RepositoryFactory.Project(
+            return new  RepositoryProject2(
                 source.ProjectName,
                 source.RootNamespace,
                 source.TargetFramework,
-                source.OutputType.ToString());
+                "Library",
+                source.ProjectType);
+        }
+
+        private class RepositoryProject2 : IRepositoryProject
+        {
+            public RepositoryProject2(string projectName, string rootNamespace, string targetFramework, string outputType, ProjectType projectType)
+            {
+                ProjectName = projectName;
+                RootNamespace = rootNamespace;
+                TargetFramework = targetFramework;
+                OutputType = outputType;
+                ProjectType = projectType;
+            }
+
+            public string ProjectName { get; }
+            public string RootNamespace { get; }
+            public string TargetFramework { get; }
+            public string OutputType { get; }
+            public ProjectType ProjectType { get; }
         }
     }
 
@@ -85,7 +100,7 @@ namespace RepositoryDialog
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             Solution2.OpenSolutionFile(AddToCurrent, solutionFilePath);
-            Solution4.EnsureSolutionIsLoaded((uint)__VSBSLFLAGS.VSBSLFLAGS_None);
+            //Solution4.EnsureSolutionIsLoaded((uint)__VSBSLFLAGS.VSBSLFLAGS_None);
             Solution2.SaveSolutionElement((uint)__VSSLNSAVEOPTIONS.SLNSAVEOPT_ForceSave, null, 0);
             await CollapseSolutionAsync().ConfigureAwait(false);
         }
@@ -125,7 +140,7 @@ namespace RepositoryDialog
         /// <summary>
         /// Gets the Solution4.
         /// </summary>
-        private static IVsSolution4 Solution4 => GetService<SVsSolution, IVsSolution4>();
+        //private static IVsSolution4 Solution4 => GetService<SVsSolution, IVsSolution4>();
 
         /// <summary>
         /// The GetService.

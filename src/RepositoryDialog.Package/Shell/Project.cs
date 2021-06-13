@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.VisualStudio.PlatformUI;
+using Repository.Services;
 
 namespace RepositoryDialog.Shell
 {
@@ -23,6 +24,7 @@ namespace RepositoryDialog.Shell
     public class Project : ObservableObject
     {
         private OutputType _outputType;
+        private ProjectType _projectType;
         private string _projectName;
         private string _rootNamespace;
         private string _targetFramework;
@@ -84,6 +86,18 @@ namespace RepositoryDialog.Shell
             set
             {
                 SetProperty(ref _targetFramework, value);
+            }
+        }
+
+        public ProjectType ProjectType
+        {
+            get
+            {
+                return _projectType;
+            }
+            set
+            {
+                SetProperty(ref _projectType, value);
             }
         }
     }

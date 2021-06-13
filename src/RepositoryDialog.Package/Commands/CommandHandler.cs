@@ -9,6 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Repository.Services;
 using Task = System.Threading.Tasks.Task;
 using Microsoft.VisualStudio.Shell;
+using EnvDTE80;
+using Microsoft.VisualStudio.Shell.Interop;
+using EnvDTE;
+using RepositoryDialog.Options;
 
 namespace RepositoryDialog.Commands
 {
@@ -23,6 +27,9 @@ namespace RepositoryDialog.Commands
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
+
+            var repoZipURL = await OptionPage.GetRepositoryZipUrlAsync().ConfigureAwait(false);
+
             var infra = Shell.RepositoryFactory.Create();
             if (infra.Dialog.ShowModal() == true)
             {
@@ -36,11 +43,10 @@ namespace RepositoryDialog.Commands
                     repository.OutputPath,
                     repository.RootNamespace,
                     repository.TargetFramework,
+                    repoZipURL,
                     repository.Projects.ConvertAll());
 
                 await generator.CreateRepositoryAsync(settings);
-
-                Debug.Print("");
             }
         }
     }

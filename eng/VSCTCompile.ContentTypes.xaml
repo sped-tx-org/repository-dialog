@@ -10,4 +10,6 @@
 
   <ItemType Name="VSCTCompile" DisplayName="Command Table (VSCT)" />
 
+  <FileExtension Name=".vsct" ContentType="VSCTCompile" />
+
 </ProjectSchemaDefinitions>

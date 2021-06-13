@@ -2,6 +2,8 @@
 <!--Copyright, Microsoft Corporation, All rights reserved.-->
 <Rule xmlns="http://schemas.microsoft.com/build/2009/properties"
       Name="VSCTCompile"
+      DisplayName="General"
+      Description="File Properties"
       PageTemplate="generic"
       PropertyPagesHidden="true">
 

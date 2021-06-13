@@ -5,6 +5,7 @@ using System.Threading;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using RepositoryDialog.Commands;
+using RepositoryDialog.Options;
 using Task = System.Threading.Tasks.Task;
 
 namespace RepositoryDialog.Packaging
@@ -12,6 +13,7 @@ namespace RepositoryDialog.Packaging
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidSymbols.PackageString)]
+    [ProvideOptionPage(typeof(OptionPage), "Repository Generator", "General", 0, 0, true)]
     public class RepositoryDialogPackage : AsyncPackage, IVsInstalledProduct
     {
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)

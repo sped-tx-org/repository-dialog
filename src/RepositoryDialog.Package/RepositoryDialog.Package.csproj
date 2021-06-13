@@ -12,7 +12,7 @@
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <ItemGroup>
-    <PackageReference Include="Repository.Services" Version="1.0.231001" />
+    <PackageReference Include="Repository.Services" Version="1.1.231001" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,20 +36,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
-
-
-
-
-
-
-
-
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
-
-
-
 
   <ItemGroup>
     <Compile Update="Commands\MenuCommandGenerator.cs">

@@ -4,7 +4,7 @@
     <DotNetFinalVersionKind>release</DotNetFinalVersionKind>
     <DisableArcadeTestFramework>true</DisableArcadeTestFramework>
     <UsingToolXliff Condition="'$(UsingToolXliff)'==''">false</UsingToolXliff>
-    <UsingToolVsSDK Condition="'$(UsingToolVsSDK)'==''">false</UsingToolVsSDK>
+    <UsingToolVsSDK Condition="'$(UsingToolVsSDK)'==''">true</UsingToolVsSDK>
     <UsingToolNetFrameworkReferenceAssemblies Condition="'$(MSBuildRuntimeType)'=='Core'">true</UsingToolNetFrameworkReferenceAssemblies>
     <IsWpfTempProject>false</IsWpfTempProject>
     <IsWpfTempProject Condition="$(MSBuildProjectName.EndsWith('_wpftmp'))">true</IsWpfTempProject>
@@ -73,5 +73,5 @@
     <GeneratedInternalsVisibleToFile>$(IntermediateOutputPath)GeneratedInternalsVisibleTo.g.cs</GeneratedInternalsVisibleToFile>
   </PropertyGroup>
 
-  <Import Project="eng\VisualStudio.props" />
+  <Import Project="eng\VisualStudio.props"  />
 </Project>
