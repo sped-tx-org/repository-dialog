@@ -172,8 +172,8 @@
                             Background="{DynamicResource Theme.Environment.Background}"
                             Foreground="{DynamicResource Theme.Environment.Foreground}"
                             IsOpen="True">
-                            <MenuItem Header="Add Project" Click="ProjectsDataGrid_OnAddProjectClick"/>
-                            <MenuItem Header="Delete Project" Click="ProjectsDataGrid_OnDeleteProjectClick"/>
+                            <MenuItem Click="ProjectsDataGrid_OnAddProjectClick" Header="Add Project" />
+                            <MenuItem Click="ProjectsDataGrid_OnDeleteProjectClick" Header="Delete Project" />
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>

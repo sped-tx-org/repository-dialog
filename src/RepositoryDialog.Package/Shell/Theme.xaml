@@ -403,9 +403,7 @@
         <Setter Property="FontWeight" Value="{StaticResource Theme.Environment.FontWeight}" />
     </Style>
 
-    <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
-        
-    </Style>
+    <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}" />
 
 
     <Style BasedOn="{StaticResource DialogWindowBaseStyle}" TargetType="{x:Type ui:DialogWindow}" />
